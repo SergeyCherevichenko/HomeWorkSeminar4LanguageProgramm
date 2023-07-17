@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata;
+﻿using System.ComponentModel;
+using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 
 namespace HomeWorkSeminar4;
@@ -192,16 +193,16 @@ class Program
             int count = 0;
             for (int i = 0; i < length; i++)
             {
-                if(count == 10) array[i] = 0;
+                if (count == 10) array[i] = 0;
                 else array[i] = random.Next(0, 2);
                 if (array[i] == 1) count++;
             }
-     
+
             int newLenght = count * count;
             int[] newArray = new int[newLenght];
             if (newLenght <= length)
             {
-                
+
                 for (int i = 0; i < newLenght; i++)
                 {
                     newArray[i] = array[i];
@@ -226,8 +227,84 @@ class Program
 
         }
 
+        void task3()
+        {
+            // Задача 3. Массив на 100 элементов задаётся случайными числами от 1 до 99.
+            // Определите самый часто встречающийся элемент в массиве. Если таких элементов несколько, вывести их все
+
+            Random random = new Random();
+            int[] randomArray = new int[100]; //Создаем массив на 100 элементов
+            for (int i = 0; i < randomArray.Length; i++)
+            {
+                randomArray[i] = random.Next(1, 100);//Заплняем его рандомными числами от 1 до 99
+
+            }
+
+            int[] elementsArray = new int[100];// Создаем массив 
+            for (int i = 0; i < elementsArray.Length-1; i++)
+            {
+                elementsArray[i] = i;
+
+            }
+
+
+            int[] newArray = new int[100];
+            
+
+
+            for (int i = 0; i < elementsArray.Length; i++)
+            {
+
+                int count = 0;
+
+
+                for (int j = 0; j < randomArray.Length; j++)
+                {
+
+
+                    if (elementsArray[i] == randomArray[j])
+                    {
+                        count++;
+                        newArray[i] = count;
+                        
+
+                    }
+                    
+
+                }
+
+            }
+
+            int index = 0;
+            
+           int max = newArray[0];
+            for (int i = 0; i < newArray.Length; i++)
+            { 
+                
+                if (max < newArray[i])
+                {
+                    max = newArray[i];
+                    index = i;
+                }
+            }
+           
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                if (max == newArray[i])
+                {
+                    index = i;
+                    Console.WriteLine($"Больше всего повторялся элемент {index} в количестве {max}");
+                }
+            }
+
+
+
+
+        }
+
+
         Console.Clear();
-        Console.WriteLine("Введите номер задачи 25, 27, 29, 1 или 2");
+        Console.WriteLine("Введите номер задачи 25, 27, 29, 1, 2 или 3");
         int task = Convert.ToInt32(Console.ReadLine());
         switch (task)
         {
@@ -236,8 +313,10 @@ class Program
             case 29: task29(); break;
             case 1: task1(); break;
             case 2: task2(); break;
+            case 3: task3(); break;
             default: Console.WriteLine("Задачи с таким номером не существует!"); break;
         }
 
     }
 }
+
