@@ -241,53 +241,43 @@ class Program
             }
 
             int[] elementsArray = new int[100];// Создаем массив 
-            for (int i = 0; i < elementsArray.Length-1; i++)
+            for (int i = 0; i < elementsArray.Length - 1; i++)
             {
                 elementsArray[i] = i;
 
             }
-
-
             int[] newArray = new int[100];
-            
-
 
             for (int i = 0; i < elementsArray.Length; i++)
             {
 
                 int count = 0;
-
-
                 for (int j = 0; j < randomArray.Length; j++)
                 {
-
-
                     if (elementsArray[i] == randomArray[j])
                     {
                         count++;
                         newArray[i] = count;
-                        
 
                     }
-                    
 
                 }
 
             }
 
             int index = 0;
-            
-           int max = newArray[0];
+
+            int max = newArray[0];
             for (int i = 0; i < newArray.Length; i++)
-            { 
-                
+            {
+
                 if (max < newArray[i])
                 {
                     max = newArray[i];
                     index = i;
                 }
             }
-           
+
             for (int i = 0; i < newArray.Length; i++)
             {
                 if (max == newArray[i])
@@ -296,9 +286,6 @@ class Program
                     Console.WriteLine($"Больше всего повторялся элемент {index} в количестве {max}");
                 }
             }
-
-
-
 
         }
 
